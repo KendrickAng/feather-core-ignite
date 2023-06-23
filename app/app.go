@@ -113,15 +113,23 @@ import (
 	feathercoreignitemodule "github.com/KendrickAng/feather-core-ignite/x/feathercoreignite"
 	feathercoreignitemodulekeeper "github.com/KendrickAng/feather-core-ignite/x/feathercoreignite/keeper"
 	feathercoreignitemoduletypes "github.com/KendrickAng/feather-core-ignite/x/feathercoreignite/types"
+
 	// this line is used by starport scaffolding # stargate/app/moduleImport
 
 	appparams "github.com/KendrickAng/feather-core-ignite/app/params"
 	"github.com/KendrickAng/feather-core-ignite/docs"
 )
 
-const (
-	AccountAddressPrefix = "cosmos"
-	Name                 = "feather-core-ignite"
+// DO NOT change the names of these variables!
+var (
+	AccountAddressPrefix       = "ignite"
+	AccountPubKeyPrefix        = "ignitepub"
+	ValidatorAddressPrefix     = "ignitevaloper"
+	ValidatorPubKeyPrefix      = "ignitevaloperpub"
+	ConsensusNodeAddressPrefix = "ignitevalcons"
+	ConsensusNodePubKeyPrefix  = "ignitevalconspub"
+	BondDenom                  = "stake"
+	AppName                    = "feather-core-ignite"
 )
 
 // this line is used by starport scaffolding # stargate/wasm/app/enabledProposals
@@ -202,7 +210,7 @@ func init() {
 		panic(err)
 	}
 
-	DefaultNodeHome = filepath.Join(userHomeDir, "."+Name)
+	DefaultNodeHome = filepath.Join(userHomeDir, "."+AppName)
 }
 
 // App extends an ABCI application, but with most of its parameters exported.
@@ -279,7 +287,7 @@ func New(
 	txConfig := encodingConfig.TxConfig
 
 	bApp := baseapp.NewBaseApp(
-		Name,
+		AppName,
 		logger,
 		db,
 		encodingConfig.TxConfig.TxDecoder(),
@@ -864,7 +872,7 @@ func (app *App) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APIConfig
 	ModuleBasics.RegisterGRPCGatewayRoutes(clientCtx, apiSvr.GRPCGatewayRouter)
 
 	// register app's OpenAPI routes.
-	docs.RegisterOpenAPIService(Name, apiSvr.Router)
+	docs.RegisterOpenAPIService(AppName, apiSvr.Router)
 }
 
 // RegisterTxService implements the Application.RegisterTxService method.

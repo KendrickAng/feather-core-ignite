@@ -4,6 +4,7 @@ go 1.19
 
 require (
 	cosmossdk.io/api v0.3.1
+	github.com/CosmWasm/wasmvm v1.2.4
 	github.com/cometbft/cometbft v0.37.1
 	github.com/cometbft/cometbft-db v0.7.0
 	github.com/cosmos/cosmos-sdk v0.47.3

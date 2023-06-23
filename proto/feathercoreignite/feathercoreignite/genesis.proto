@@ -1,0 +1,12 @@
+syntax = "proto3";
+package feathercoreignite.feathercoreignite;
+
+import "gogoproto/gogo.proto";
+import "feathercoreignite/feathercoreignite/params.proto";
+
+option go_package = "github.com/KendrickAng/feather-core-ignite/x/feathercoreignite/types";
+
+// GenesisState defines the feathercoreignite module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+}

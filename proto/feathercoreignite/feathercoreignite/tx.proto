@@ -1,0 +1,7 @@
+syntax = "proto3";
+package feathercoreignite.feathercoreignite;
+
+option go_package = "github.com/KendrickAng/feather-core-ignite/x/feathercoreignite/types";
+
+// Msg defines the Msg service.
+service Msg {}

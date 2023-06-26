@@ -20,7 +20,7 @@ inputs:
 transformations:
   - name: project path
     type: replace
-    pattern: github.com/terra-money/feather-core
+    pattern: github.com/KendrickAng/feather-core-ignite
     replacement: "{{ .go_module }}"
     files:
       - "*/**.go"
@@ -30,7 +30,7 @@ transformations:
 
   - name: chain name
     type: replace
-    pattern: feather-core
+    pattern: feather-ignite
     replacement: "{{ .chain_name }}"
     files:
       - "README.md"
@@ -39,7 +39,7 @@ transformations:
 
   - name: account prefix
     type: replace
-    pattern: pfeath
+    pattern: fignite
     replacement: "{{ .account_prefix }}"
     files:
       - "config/mainnet/config.json"

@@ -131,7 +131,6 @@ ldflags := $(strip $(ldflags))
 BUILD_FLAGS := -tags "$(build_tags_comma_sep)" -ldflags '$(ldflags)' -trimpath
 
 install: go.sum
-	echo $(BINDIR)
 	go build -o $(BINDIR)/$(FEATH_CONFIG_APP_BINARY_NAME) -mod=readonly $(BUILD_FLAGS) ./cmd/feather-core-ignited
 
 build: go.sum
